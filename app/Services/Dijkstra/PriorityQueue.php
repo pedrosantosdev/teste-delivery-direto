@@ -13,13 +13,11 @@ class PriorityQueue {
 
 	private $size;
 	private $liststart;
-	private $comparator;
 
-	function __construct($comparator) {
+	function __construct() {
 		$this->size = 0;
 		$this->liststart = null;
 		$this->listend = null;
-		$this->comparator = $comparator;
 	}
 
 	function add($x) {
@@ -29,12 +27,11 @@ class PriorityQueue {
 			$this->liststart = new PriorityList($x);
 		} else {
             $node = $this->liststart;
-			$comparator = $this->comparator;
 			$newnode = new PriorityList($x);
 			$lastnode = null;
 			$added = false;
 			while($node) {
-				if ($comparator($newnode, $node) < 0) {
+				if ($this->compareWeights($newnode, $node) < 0) {
 					// newnode has higher priority
 					$newnode->next = $node;
 					if ($lastnode == null) {
@@ -80,5 +77,9 @@ class PriorityQueue {
 		$this->size = $this->size - 1;
 		$this->liststart = $this->liststart->next;
 		return $x;
+    }
+
+    function compareWeights($a, $b) {
+        return $a->data[0] - $b->data[0];
     }
 }

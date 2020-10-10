@@ -34,7 +34,7 @@ class Graph {
 		$previous = array();
 
 		$queue = array();
-		$Q = new PriorityQueue("compareWeights");
+		$Q = new PriorityQueue();
 		$Q->add(array($dist[$from], $from));
 
 		$nodes = $this->nodes;
@@ -91,8 +91,4 @@ class Graph {
 		return $this->paths_to($prev, $to);
 	}
 
-}
-
-function compareWeights($a, $b) {
-	return $a->data[0] - $b->data[0];
 }

@@ -26,8 +26,13 @@ class VertexController extends Controller
     public function calculateRouteBetweenTwoPoints(Request $request)
     {
         $request->validate(['initialCity' => 'required', 'finalCity' => 'required']);
+        if($request->input('initialCity') === $request->input('finalCity')) {
+            $message = 'Cidade Final e Inicial são iguais';
+            return response()->json(['message' => $message], 200);
+        }
         $vertexs = (new VertexRepository())->all();
         $route = DistanceService::calcDistanceGraph($vertexs, $request->input('initialCity'), $request->input('finalCity'));
-        return response()->json($route);
+        $message = count($route) > 0 ? 'O Melhor caminho é:' . implode(',',$route) : 'Caminho não é possivel';
+        return response()->json(['message' => $message], 200);
     }
 }

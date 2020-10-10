@@ -22,7 +22,7 @@
           <button type="button" class="btn btn-primary" id="btnSubmit">Cadastrar</button>
           <button type="reset" class="btn btn-danger" id="btnReset">Limpar</button>
     </form>
-    <div class="alert" id="alert"></div>
+
     <script type="text/javascript">
         $("#btnSubmit").click(sendForm);
         function sendForm(){
@@ -34,18 +34,18 @@
                 method: "POST",
                 data: { _token: "{{ csrf_token() }}", initialCity, finalCity},
                 beforeSend : function(){
-                    $("#alert").html("ENVIANDO...");
-                    $("#alert").show();
+                    $("#message").html("ENVIANDO...");
+                    $(".alert").show();
                 }
             }).done(function(resposta) {
-                $("#alert").html(resposta.message);
+                $("#message").html(resposta.message);
             }).fail(function(jqXHR, textStatus ) {
                 if(jqXHR.status == 422){
-                    $("#alert").html("Campos Invalidos...");
+                    $("#message").html("Campos Invalidos...");
                 } else {
-                    $("#alert").html("Um erro ocorreu...");
+                    $("#message").html("Um erro ocorreu...");
                 }
-                $("#alert").hide();
+                $(".alert").hide();
             });
         }
     </script>

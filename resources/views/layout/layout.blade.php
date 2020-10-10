@@ -29,6 +29,15 @@
     </div>
   </nav>
 <div class="content">
+    <div class="alert">
+        <button class="btn" id="btnCloseAlert">X</button>
+        <div id="message"></div>
+        <script type="text/javascript">
+            $("#btnCloseAlert").click(function(){
+                $(".alert").hide();
+            });
+        </script>
+    </div>
     @yield('conteudo')
 </div>
 </body>
