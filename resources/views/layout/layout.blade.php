@@ -30,7 +30,7 @@
   </nav>
 <div class="content">
     <div class="alert">
-        <button class="btn" id="btnCloseAlert">X</button>
+        <button class="btn btn-danger" id="btnCloseAlert">X</button>
         <div id="message"></div>
         <script type="text/javascript">
             $("#btnCloseAlert").click(function(){
