@@ -28,7 +28,7 @@ class PriorityQueue {
 		if($this->liststart == null) {
 			$this->liststart = new PriorityList($x);
 		} else {
-			$node = $this->liststart;
+            $node = $this->liststart;
 			$comparator = $this->comparator;
 			$newnode = new PriorityList($x);
 			$lastnode = null;
@@ -59,11 +59,9 @@ class PriorityQueue {
 		$node = $this->liststart;
 		$i = 0;
 		if (!$node) {
-			print "<< No nodes >>\n";
 			return;
 		}
 		while($node) {
-			print "[$i]=" . $node->data[1] . " (" . $node->data[0] . ")\n";
 			$node = $node->next;
 			$i++;
 		}
@@ -82,9 +80,5 @@ class PriorityQueue {
 		$this->size = $this->size - 1;
 		$this->liststart = $this->liststart->next;
 		return $x;
-    }
-
-    function compareWeights($a, $b) {
-        return $a->data[0] - $b->data[0];
     }
 }

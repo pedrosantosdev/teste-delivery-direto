@@ -1,0 +1,29 @@
+version: "3.4"
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: docker/api/api.dockerfile
+      args:
+        INSTALL_XDEBUG: ${APP_DEBUG} # desabilitar para produção
+    volumes:
+      - ./:/var/www/html
+      - ./docker/api/docker-entrypoint.sh:/var/www/html/docker/api/docker-entrypoint.sh
+    restart: always
+    #container_name: api # Remove To Scale
+
+  proxy:
+    build:
+      context: ./
+      dockerfile: docker/proxy/proxy.dockerfile
+    volumes:
+      - ./:/var/www/html
+      - ./docker/proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    links:
+      - api
+    depends_on:
+      - api
+    restart: always
+    container_name: proxy

@@ -46,3 +46,11 @@ A sua interface também deve dar a possibilidade de escolher a cidade inicial e 
 Você deve criar um outro botão para fazer a requisição ajax para que o backend faça a decisão de qual será a melhor ordem de visitação das cidades, sendo que a melhor ordem é você percorrer a menor distância possível. O resultado final deve ser mostrado na interface do seu sistema indicando qual é a ordem dos pontos a serem visitados e a distância total percorrida.
 
 Na medida do possível faça comentários em inglês de suas funções no código para entendermos o que você implementou.
+
+## Vertices e Cidades
+
+Os arquivos de banco de dados estao dentro da pasta database
+
+## Rodar
+
+Para Executar o Projeto basta rodar (docker-compose up -d --build) e o projeto subira para a porta 80 no localhost o primeiro build, demora devido que ele ira baixar todas as dependencias

@@ -7,7 +7,7 @@ namespace App\Services\Dijkstra;
  */
 
 use App\Services\Dijkstra\Edge;
-use App\Services\Dijkstra\PriorityQueue;
+require_once("PriorityQueue.php");
 
 class Graph {
 
